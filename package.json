@@ -1,6 +1,6 @@
 {
   "name": "mediastore-sdk-release-test",
-  "version": "1.0.4",
+  "version": "1.0.1",
   "private": false,
   "main": "dist/package.js",
   "files": [
