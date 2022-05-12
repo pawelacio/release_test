@@ -1,6 +1,6 @@
 # MediaStore SDK
 
-## Release test 1
+## Release test 2
 
 This is the Cleeng official component library to be used with React.js.
 

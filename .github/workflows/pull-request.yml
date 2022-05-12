@@ -1,7 +1,7 @@
 name: Publish test library version on Github packages
 on:
   pull_request:
-    types: [opened]
+    types: [opened, edited]
 jobs:
   publish:
     name: publish
