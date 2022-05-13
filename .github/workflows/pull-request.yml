@@ -12,9 +12,10 @@ jobs:
         with:
           node-version: '16'
           registry-url: 'https://npm.pkg.github.com'
+          always-auth: true
           # scope: '@cleeng'
-      - run: |
-        echo '@cleeng:registry=https://npm.pkg.github.com' > ${{ github.workspace }}/.npmrc
+      # - run: |
+      #       echo "@cleeng:registry=https://npm.pkg.github.com" >> ${{ github.workspace }}/.npmrc
       - run: npm ci
       - run: |
             echo "PACKAGE_VERSION=$(npm show . version)" >> $GITHUB_ENV
