@@ -25,6 +25,7 @@ jobs:
       - run: npm run compile
       - run: npm config get registry
       - run: npm config set registry https://npm.pkg.github.com
+      - run: npm config set scope @pawelacio
       - run: npm config list
       - run: npm publish  --access public
         env:
