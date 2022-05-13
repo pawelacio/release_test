@@ -1,7 +1,7 @@
 name: Prepare feature package
 on:
   pull_request:
-    types: [opened, edited]
+    types: [opened, synchronize, edited]
 jobs:
   publish:
     name: publish
