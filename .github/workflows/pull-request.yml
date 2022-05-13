@@ -19,14 +19,16 @@ jobs:
       - run: npm ci
       - run: |
             echo "PACKAGE_VERSION=$(npm show . version)" >> $GITHUB_ENV
-      - run: git config --global user.name "GitHub CD bot"
-      - run: git config --global user.email "pkaczmarek@cleeng.com"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - run: git config --global user.name "GitHub CD bot"
+      # - run: git config --global user.email "pkaczmarek@cleeng.com"
       - run: npm version ${{ env.PACKAGE_VERSION}}-${{ github.event.number }}-${{ github.event.pull_request.head.sha }}
       - run: npm run compile
       - run: npm config get registry
       - run: npm config set registry https://npm.pkg.github.com
       - run: npm config set scope @pawelacio
       - run: npm config list
-      - run: npm publish  --access public
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
