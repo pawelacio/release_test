@@ -14,6 +14,8 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           always-auth: true
           scope: '@pawelacio'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # - run: |
       #       echo "@cleeng:registry=https://npm.pkg.github.com" >> ${{ github.workspace }}/.npmrc
       - run: npm ci
@@ -25,9 +27,9 @@ jobs:
       # - run: git config --global user.email "pkaczmarek@cleeng.com"
       - run: npm version ${{ env.PACKAGE_VERSION}}-${{ github.event.number }}-${{ github.event.pull_request.head.sha }}
       - run: npm run compile
-      - run: npm config get registry
-      - run: npm config set registry https://npm.pkg.github.com
-      - run: npm config set scope @pawelacio
+      # - run: npm config get registry
+      # - run: npm config set registry https://npm.pkg.github.com
+      # - run: npm config set scope @pawelacio
       - run: npm config list
       - run: npm publish
         env:
