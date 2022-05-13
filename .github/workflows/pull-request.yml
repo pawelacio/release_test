@@ -21,7 +21,7 @@ jobs:
       - run: git config --global user.email "pkaczmarek@cleeng.com"
       - run: npm ci
       - run: |
-            echo "PACKAGE_VERSION=$(npm show . version)" >> $GITHUB_ENV
+            echo "PACKAGE_VERSION=$(cat package.json | grep -o  '"version": "[^"]*' | grep -o '[^"]*$')" >> $GITHUB_ENV
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: npm version ${{ env.PACKAGE_VERSION}}-${{ github.event.number }}-${{ github.event.pull_request.head.sha }}
