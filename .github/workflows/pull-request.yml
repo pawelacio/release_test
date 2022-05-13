@@ -20,6 +20,7 @@ jobs:
       - run: git config --global user.email "pkaczmarek@cleeng.com"
       - run: npm version ${{ env.PACKAGE_VERSION}}-${{ github.event.number }}-${{ github.event.pull_request.head.sha }}
       - run: npm run compile
-      - run: npm publish
+      - run: npm config get registry
+      - run: npm publish  --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
