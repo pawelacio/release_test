@@ -24,6 +24,8 @@ jobs:
       - run: npm version ${{ env.PACKAGE_VERSION}}-${{ github.event.number }}-${{ github.event.pull_request.head.sha }}
       - run: npm run compile
       - run: npm config get registry
+      - run: npm config set registry https://npm.pkg.github.com
+      - run: npm config get registry
       - run: npm publish  --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
